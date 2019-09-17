@@ -15,6 +15,5 @@ GBA_CQL/Scripts/esm
 GBA_CQL/Scripts/umd
 GBA_CQL/Scripts/WebForms
 GBA_CQL/Scripts/modernizr*
-GBA_CQL/Scripts/*.ts
 GBA_CQL/Content/bootstrap*.css
 GBA_CQL/Content/bootstrap*.map
