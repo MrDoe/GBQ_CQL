@@ -11,9 +11,9 @@ GBA_CQL/Scripts/jquery*.map
 GBA_CQL/Scripts/popper*.js
 GBA_CQL/Scripts/popper*.map
 GBA_CQL/Scripts/README.md
-GBA_CQL/Scripts/esm
-GBA_CQL/Scripts/umd
-GBA_CQL/Scripts/WebForms
-GBA_CQL/Scripts/modernizr*
+#GBA_CQL/Scripts/esm
+#GBA_CQL/Scripts/umd
+#GBA_CQL/Scripts/WebForms
+#GBA_CQL/Scripts/modernizr*
 GBA_CQL/Content/bootstrap*.css
 GBA_CQL/Content/bootstrap*.map
