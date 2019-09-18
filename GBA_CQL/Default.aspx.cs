@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Web.UI;
 
 namespace GBA_CQL
 {
@@ -186,6 +187,12 @@ namespace GBA_CQL
             // post to server
             string sResponse = SendRequest(requests.sJSON_Mea, "Measure");
 
+            if (sResponse == "-1")
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "modalAlert();", true);
+                return;
+            }
+
             // retrieve response id
             JObject oMea = JObject.Parse(@sResponse);
             string uuid_mea = (string)oMea.SelectToken(".id");
@@ -197,7 +204,6 @@ namespace GBA_CQL
             // beautify and print JSON output
             txtOutput.Text = JValue.Parse(sResponse).ToString(Formatting.Indented);
         }
-
         private string SendRequest(string sJSON, string sType)
         {
             var client = new RestClient(ddlServer.SelectedValue + "/" + sType);
@@ -213,7 +219,11 @@ namespace GBA_CQL
             request.AddParameter("application/fhir+json", sJSON, ParameterType.RequestBody);
 
             var response = client.Execute(request);
-            return response.Content;
+
+            if (response.Content.Length > 0)
+                return response.Content;
+            else
+                return "-1"; // no response
         }
 
         protected void txtCQL_TextChanged(object sender, EventArgs e)
